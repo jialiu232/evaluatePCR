@@ -93,5 +93,6 @@ For example,
 `makefig_logGenes_vs_ct(test011_filt)`
    
 
+## Summary
 
-Finally, you reach the end for now. I will keep updating if there is more tasks to do in the lab.
+Finally, you've reached the end for now. I will keep updating more functions evaluating PCR results if there are more tasks to do in the lab.
