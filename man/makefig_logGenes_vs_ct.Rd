@@ -6,18 +6,21 @@ Make figure of log(gene_copies) vs Ct values
 %%  ~~function to do ... ~~
 }
 \description{
+This function takes the filtered PCR result dataframe which contains rows of standard sample gene (with 6 dilution folds and potential replicates) and the corresponding primer pair for the standard gene as input, and visualize the log(gene_copies) versus Ct values.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-makefig_logGenes_vs_ct(x)
+makefig_logGenes_vs_ct(df_filt)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
+  \item{df_filt}{
+  A filtered dataframe which contains rows of standard sample gene (with 6 dilution folds and potential replicates) and the corresponding primer pair for the standard gene
 %%     ~~Describe \code{x} here~~
 }
 }
 \details{
+See more details at <https://github.com/jialiu232/evaluatePCR>
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
@@ -31,6 +34,7 @@ makefig_logGenes_vs_ct(x)
 %% ~put references to the literature/web site here ~
 }
 \author{
+Jia Liu
 %%  ~~who you are~~
 }
 \note{
@@ -43,14 +47,8 @@ makefig_logGenes_vs_ct(x)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+makefig_logGenes_vs_ct(test009_filt)
 
-## The function is currently defined as
-function (x)
-{
-  }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):

@@ -2,10 +2,13 @@
 \alias{getDat_stGene_2_stPrim}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Get standard gene and the primer pair designed fro the standard gene
+Get the subset of dataframe with rows related to standard gene and the primer pair that designed for the standard gene
 %%  ~~function to do ... ~~
 }
 \description{
+In the ht-qPCR results, one standard example gene with different dilution folds (from 1 to 6) and potential replicates is supposed to be amplified by a previously designed primer pair.
+
+This function takes user input dataframe, standard gene sample, the primer pair that is specific to the standard gene, and returns a subset dataframe with rows related to standard gene and the primer pair that designed for the standard gene.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -14,16 +17,20 @@ getDat_stGene_2_stPrim(dat, startSample, startAssay)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{dat}{
+  A dataframe that contains PCR results with requested format
 %%     ~~Describe \code{dat} here~~
 }
   \item{startSample}{
+  A string which is a substring that starts from the leftmost character of sample gene name. This string should differentiate the user preferred sample gene name with others
 %%     ~~Describe \code{startSample} here~~
 }
   \item{startAssay}{
+  A string which is a substring that starts from the leftmost character of assay primer name. This string should differentiate the user preferred assay primer name with others
 %%     ~~Describe \code{startAssay} here~~
 }
 }
 \details{
+See more details at <https://github.com/jialiu232/evaluatePCR>
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
@@ -37,6 +44,7 @@ getDat_stGene_2_stPrim(dat, startSample, startAssay)
 %% ~put references to the literature/web site here ~
 }
 \author{
+Jia Liu
 %%  ~~who you are~~
 }
 \note{
@@ -49,26 +57,8 @@ getDat_stGene_2_stPrim(dat, startSample, startAssay)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+test009 <- getDat_stGene_2_stPrim(f, "amoA", "amoA.009")
 
-## The function is currently defined as
-function (dat, startSample, startAssay)
-{
-    stData <- dat \%>\% filter(startsWith(Sample, startSample)) \%>\%
-        filter(startsWith(Assay, startAssay)) \%>\% mutate(Gene_copy = case_when(grepl("^-1",
-        Sample, fixed = TRUE) ~ 1100000, grepl("^-2", Sample,
-        fixed = TRUE) ~ 110000, grepl("^-3", Sample, fixed = TRUE) ~
-        11000, grepl("^-4", Sample, fixed = TRUE) ~ 1100, grepl("^-5",
-        Sample, fixed = TRUE) ~ 110, grepl("^-6", Sample, fixed = TRUE) ~
-        11), Concentration_cate = case_when(grepl("^-1", Sample,
-        fixed = TRUE) ~ "1st", grepl("^-2", Sample, fixed = TRUE) ~
-        "2nd", grepl("^-3", Sample, fixed = TRUE) ~ "3rd", grepl("^-4",
-        Sample, fixed = TRUE) ~ "4th", grepl("^-5", Sample, fixed = TRUE) ~
-        "5th", grepl("^-6", Sample, fixed = TRUE) ~ "6th"))
-    return(stData)
-  }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):

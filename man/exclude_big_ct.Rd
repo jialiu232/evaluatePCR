@@ -2,22 +2,30 @@
 \alias{exclude_big_ct}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Exclude big Ct values at low concentrations to make values fit in a log(gene_copies) vs ct figure
+Exclude rows with big Ct values at low concentrations to make values fit in a log(gene_copies) vs ct figure
 %%  ~~function to do ... ~~
 }
 \description{
+Before visualizing the gene_copies vs ct values, you may want to exclude the sample points at some lower concentrations where Ct values are extremely big. This function will do that with a user defined dataframe and a dilution fold. The output will be a dataframe with the same format as input and excluded the rows at user defined dilution fold.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-exclude_big_ct(x)
+exclude_big_ct(stData, dilute_fold)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
+  \item{stData}{
+  A dataframe with required format. (See readme for details)
+%%     ~~Describe \code{x} here~~
+}
+  \item{dilute_fold}{
+  A string with the format "^-n", where n can vary from 1 to 6 depends on the dilution fold you want to exclude
 %%     ~~Describe \code{x} here~~
 }
 }
 \details{
+See more details at <https://github.com/jialiu232/evaluatePCR>
+
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
@@ -31,6 +39,7 @@ exclude_big_ct(x)
 %% ~put references to the literature/web site here ~
 }
 \author{
+Jia Liu
 %%  ~~who you are~~
 }
 \note{
@@ -43,14 +52,7 @@ exclude_big_ct(x)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (x)
-{
-  }
+exclude_big_ct(test16, "^-6")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):

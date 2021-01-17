@@ -2,22 +2,33 @@
 \alias{getDat_gene_2_topnPrim}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Get the dataframe for the top n best primers for the given Sample gene
+Get subset dataframe for the top n best primers for the given Sample gene
 %%  ~~function to do ... ~~
 }
 \description{
+In the ht-qPCR results, one example gene with different dilution folds (from 1 to 6) and potential replicates may be amplified by up to 96 different primer pairs. This function takes user input dataframe, and returns a subset dataframe with rows that contains the top n user defined primers (with smallest Ct values) that amplify the user defined gene sample.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-getDat_gene_2_topnPrim(x)
+getDat_gene_2_topnPrim(dat, startSample, top_n)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
+  \item{dat}{
+  A dataframe that contains PCR results with requested format
+%%     ~~Describe \code{x} here~~
+}
+  \item{startSample}{
+  A string which is a substring that starts from the leftmost character of sample gene name. This string should differentiate the user preferred sample gene name with others
+%%     ~~Describe \code{x} here~~
+}
+  \item{top_n}{
+  A non-negative integer
 %%     ~~Describe \code{x} here~~
 }
 }
 \details{
+See more details at <https://github.com/jialiu232/evaluatePCR>
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
@@ -31,6 +42,7 @@ getDat_gene_2_topnPrim(x)
 %% ~put references to the literature/web site here ~
 }
 \author{
+Jia Liu
 %%  ~~who you are~~
 }
 \note{
@@ -43,14 +55,8 @@ getDat_gene_2_topnPrim(x)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+tes_amo <- getDat_gene_2_topnPrim(f, "amoA", 10)
 
-## The function is currently defined as
-function (x)
-{
-  }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory (show via RShowDoc("KEYWORDS")):
